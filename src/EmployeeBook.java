@@ -1,15 +1,15 @@
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-public class EmployeeList {
+public class EmployeeBook {
     private List<Employee> employeeList;
 
-    public EmployeeList(List<Employee> employeeList) {
+    public EmployeeBook(List<Employee> employeeList) {
         this.employeeList = employeeList;
     }
 
-    public EmployeeList() {
+    public EmployeeBook() {
+        this.employeeList = new ArrayList<>();
     }
 
     public void addEmloyee (Employee employee){
@@ -26,6 +26,29 @@ public class EmployeeList {
         return resultList;
     }
 
-    public List<Employee> getPhoneNumberByName(String )
+    public String getPhoneNumberByName(String name){
+        for (Employee elem : this.employeeList){
+            if (elem.getName().equals(name)){
+                return elem.getPhoneNumber();
+            }
+        }
+        return "сотрудник не найден";
+    }
 
+    public Employee getEmployeeByID(int id){
+        for (Employee elem : this.employeeList){
+            if (elem.getId()== id){
+                return elem;
+            }
+        }
+        return null;
+    }
+    public String printEmployeeBook(){
+        StringBuilder result = new StringBuilder();
+        for (Employee elem : this.employeeList){
+            result.append(elem.toString());
+            result.append("\n");
+        }
+        return result.toString();
+    }
 }
